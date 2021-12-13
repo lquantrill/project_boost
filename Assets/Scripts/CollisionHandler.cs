@@ -40,11 +40,12 @@ public class CollisionHandler : MonoBehaviour
 
         if(nextSceneIndex == SceneManager.sceneCountInBuildSettings)
         {
-            Debug.Log("Finished");
             Application.Quit();
         }
         else
         {
+            GameObject StartAnnouncement = GameObject.FindWithTag("Start Announcement");
+            Destroy(StartAnnouncement);
             SceneManager.LoadScene(nextSceneIndex);
         }
     }

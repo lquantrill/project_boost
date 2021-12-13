@@ -8,12 +8,21 @@ public class Music : MonoBehaviour
     
     void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
-        backgroundAudioSource = GetComponent<AudioSource>();
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Music");
 
-        if(!backgroundAudioSource.isPlaying)
+        if (objs.Length > 1)
         {
-            backgroundAudioSource.Play();
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+            backgroundAudioSource = GetComponent<AudioSource>();
+
+            if(!backgroundAudioSource.isPlaying)
+            {
+                backgroundAudioSource.Play();
+            }
         }
     }
 }
