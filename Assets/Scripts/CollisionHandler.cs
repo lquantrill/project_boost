@@ -13,15 +13,26 @@ public class CollisionHandler : MonoBehaviour
         else if(other.gameObject.tag == "Finish")
         {
             doneFlag = true;
+            GetComponent<Movement>().enabled = false;
+            GameObject rocket = GameObject.Find("Rocket");
+            rocket.GetComponent<AudioSource>().Stop();
             StartCoroutine(LoadNextLevel());
         }
         else
         {
             if(!doneFlag)
             {
-                ReloadLevel();
+                CrashHandler();
             }  
         }
+    }
+
+    void CrashHandler()
+    {
+        GetComponent<Movement>().enabled = false;
+        GameObject rocket = GameObject.Find("Rocket");
+        rocket.GetComponent<AudioSource>().Stop();
+        Invoke("ReloadLevel", 1);
     }
 
     void ReloadLevel()
