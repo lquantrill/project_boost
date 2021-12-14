@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
     bool doneFlag = false;
+    bool isTransitioning = true;
+    AudioSource rocketAudioSource;
+    [SerializeField] AudioClip crashSound;
+
+    void Start() {
+        rocketAudioSource = GetComponent<AudioSource>();
+    }
     
     void OnCollisionEnter(Collision other)
     {
@@ -14,8 +21,7 @@ public class CollisionHandler : MonoBehaviour
         {
             doneFlag = true;
             GetComponent<Movement>().enabled = false;
-            GameObject rocket = GameObject.Find("Rocket");
-            rocket.GetComponent<AudioSource>().Stop();
+            rocketAudioSource.Stop();
             StartCoroutine(LoadNextLevel());
         }
         else
@@ -30,9 +36,13 @@ public class CollisionHandler : MonoBehaviour
     void CrashHandler()
     {
         GetComponent<Movement>().enabled = false;
-        GameObject rocket = GameObject.Find("Rocket");
-        rocket.GetComponent<AudioSource>().Stop();
-        Invoke("ReloadLevel", 1);
+        rocketAudioSource.Stop();
+        if(!isTransitioning)
+        {
+            rocketAudioSource.PlayOneShot(crashSound);
+            isTransitioning = true;
+        }
+        Invoke("ReloadLevel", 2);
     }
 
     void ReloadLevel()

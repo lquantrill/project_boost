@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a66712d050eb075408b5e72be1cdf52d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thrusterSound: {fileID: 8300000, guid: c3aa1739310a8764f84cac943846d031, type: 3}
   thrustMagnitude: 2500
   rotateMagnitude: 1500
 --- !u!82 &4991035655898338707
@@ -79,7 +80,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c3aa1739310a8764f84cac943846d031, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -177,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7542aa202d95b514ba1fa4ebb85341ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crashSound: {fileID: 8300000, guid: b97f9c29b0ee7fb41b0b840ac9c158fb, type: 3}
 --- !u!1001 &1422598152388892410
 PrefabInstance:
   m_ObjectHideFlags: 0
