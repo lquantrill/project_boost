@@ -11,6 +11,8 @@ public class CollisionHandler : MonoBehaviour
     GameObject landingPad;
     AudioSource landingPadAudioSource;
     Movement rocketMovement;
+    [SerializeField] ParticleSystem successParticles;
+    [SerializeField] ParticleSystem explosionParticles;
     [SerializeField] AudioClip crashSound;
 
     void Start() {
@@ -47,11 +49,13 @@ public class CollisionHandler : MonoBehaviour
         if(obstacleHit == "Landing Pad")
         {
             landingPadAudioSource.Play();
+            successParticles.Play();
             StartCoroutine(LoadNextLevel());
         }
         else if(obstacleHit == "Obstacle")
         {
             rocketAudioSource.PlayOneShot(crashSound);
+            explosionParticles.Play();
             StartCoroutine(ReloadLevel());
         }
     }
