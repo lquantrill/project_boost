@@ -44,6 +44,11 @@ public class Movement : MonoBehaviour
         {
             RotateRocket("right");
         }
+        else
+        {
+            sideThrusterRightParticles.Stop();
+            sideThrusterLeftParticles.Stop();
+        }
     }
 
     void ThrustRocket()
@@ -64,11 +69,26 @@ public class Movement : MonoBehaviour
         if(direction == "left")
         {
             rocketRigidbody.AddRelativeTorque(Vector3.forward * rotateMagnitude * Time.deltaTime);
+            if(sideThrusterLeftParticles.isPlaying)
+            {
+                sideThrusterLeftParticles.Stop();
+            }
+            if(!sideThrusterRightParticles.isPlaying)
+            {
+                sideThrusterRightParticles.Play();
+            }
         }
         else
         {
             rocketRigidbody.AddRelativeTorque(-Vector3.forward * rotateMagnitude * Time.deltaTime);
-        }
-        
+            if(sideThrusterRightParticles.isPlaying)
+            {
+                sideThrusterRightParticles.Stop();
+            }
+            if(!sideThrusterLeftParticles.isPlaying)
+            {
+                sideThrusterLeftParticles.Play();
+            }
+        } 
     }
 }
