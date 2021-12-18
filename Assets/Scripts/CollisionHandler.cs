@@ -5,51 +5,55 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-    bool doneFlag = false;
-    bool isTransitioning = true;
+    bool isTransitioning = false;
+    string obstacleHit;
     AudioSource rocketAudioSource;
+    GameObject landingPad;
+    AudioSource landingPadAudioSource;
+    Movement rocketMovement;
     [SerializeField] AudioClip crashSound;
 
     void Start() {
         rocketAudioSource = GetComponent<AudioSource>();
+        landingPad = GameObject.FindWithTag("Finish");
+        landingPadAudioSource = landingPad.GetComponent<AudioSource>();
+        rocketMovement = GetComponent<Movement>();
     }
     
     void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.tag == "Start"){}
-        else if(other.gameObject.tag == "Finish")
-        {
-            doneFlag = true;
-            GetComponent<Movement>().enabled = false;
-            rocketAudioSource.Stop();
-            StartCoroutine(LoadNextLevel());
-        }
-        else
-        {
-            if(!doneFlag)
-            {
-                CrashHandler();
-            }  
-        }
-    }
-
-    void CrashHandler()
-    {
-        GetComponent<Movement>().enabled = false;
-        rocketAudioSource.Stop();
         if(!isTransitioning)
         {
-            rocketAudioSource.PlayOneShot(crashSound);
-            isTransitioning = true;
+            if(other.gameObject.tag == "Start"){}
+            else if(other.gameObject.tag == "Finish")
+            {
+                obstacleHit = "Landing Pad";
+                CrashHandler(obstacleHit);
+            }
+            else
+            {
+                obstacleHit = "Obstacle";
+                CrashHandler(obstacleHit);  
+            }
         }
-        Invoke("ReloadLevel", 2);
     }
 
-    void ReloadLevel()
+    void CrashHandler(string obstacleHit)
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;      
-
-        SceneManager.LoadScene(currentSceneIndex);
+        isTransitioning = true;
+        rocketMovement.enabled = false;
+        rocketAudioSource.Stop();
+        
+        if(obstacleHit == "Landing Pad")
+        {
+            landingPadAudioSource.Play();
+            StartCoroutine(LoadNextLevel());
+        }
+        else if(obstacleHit == "Obstacle")
+        {
+            rocketAudioSource.PlayOneShot(crashSound);
+            StartCoroutine(ReloadLevel());
+        }
     }
 
     IEnumerator LoadNextLevel()
@@ -69,5 +73,14 @@ public class CollisionHandler : MonoBehaviour
             Destroy(StartAnnouncement);
             SceneManager.LoadScene(nextSceneIndex);
         }
+    }
+
+    IEnumerator ReloadLevel()
+    {
+        yield return new WaitForSeconds(2);
+        
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;      
+
+        SceneManager.LoadScene(currentSceneIndex);
     }
 }

@@ -10,14 +10,12 @@ public class Movement : MonoBehaviour
     [SerializeField] float thrustMagnitude = 2000f;
     [SerializeField] float rotateMagnitude = 750f;
     
-    // Start is called before the first frame update
     void Start()
     {
         rocketRigidbody = GetComponent<Rigidbody>();
         rocketAudioSource = GetComponent<AudioSource>();    
     }
 
-    // Update is called once per frame
     void Update()
     {
         ProcessInput();
