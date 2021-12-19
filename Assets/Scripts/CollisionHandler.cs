@@ -5,21 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-    bool isTransitioning = false;
-    string obstacleHit;
     AudioSource rocketAudioSource;
     GameObject landingPad;
     AudioSource landingPadAudioSource;
     Movement rocketMovement;
+
     [SerializeField] ParticleSystem successParticles;
     [SerializeField] ParticleSystem explosionParticles;
     [SerializeField] AudioClip crashSound;
 
+    bool isTransitioning = false;
+    string obstacleHit;
+
     void Start() {
         rocketAudioSource = GetComponent<AudioSource>();
+        rocketMovement = GetComponent<Movement>();
+
         landingPad = GameObject.FindWithTag("Finish");
         landingPadAudioSource = landingPad.GetComponent<AudioSource>();
-        rocketMovement = GetComponent<Movement>();
     }
     
     void OnCollisionEnter(Collision other)

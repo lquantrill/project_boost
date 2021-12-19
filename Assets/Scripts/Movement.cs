@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
 {
     Rigidbody rocketRigidbody;
     AudioSource rocketAudioSource;
+    
     [SerializeField] AudioClip thrusterSound;
     [SerializeField] ParticleSystem thrusterParticles;
     [SerializeField] ParticleSystem sideThrusterRightParticles;
@@ -32,11 +33,10 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            rocketAudioSource.Stop();
-            thrusterParticles.Stop();
+            StopThrusting();
         }
 
-        if(Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             RotateRocket("left");
         }
@@ -46,8 +46,7 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            sideThrusterRightParticles.Stop();
-            sideThrusterLeftParticles.Stop();
+            StopRotating();
         }
     }
 
@@ -63,7 +62,7 @@ public class Movement : MonoBehaviour
             thrusterParticles.Play();
         }
     }
-
+    
     void RotateRocket(string direction)
     {
         if(direction == "left")
@@ -90,5 +89,17 @@ public class Movement : MonoBehaviour
                 sideThrusterLeftParticles.Play();
             }
         } 
+    }
+
+    void StopThrusting()
+    {
+        rocketAudioSource.Stop();
+        thrusterParticles.Stop();
+    }
+
+    void StopRotating()
+    {
+        sideThrusterRightParticles.Stop();
+        sideThrusterLeftParticles.Stop();
     }
 }
