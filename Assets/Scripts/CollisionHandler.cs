@@ -15,16 +15,44 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] AudioClip crashSound;
 
     bool isTransitioning = false;
+    bool collisionEnabled = true;
+    bool useDebug = false;
     string obstacleHit;
 
-    void Start() {
+    void Start()
+    {
         rocketAudioSource = GetComponent<AudioSource>();
         rocketMovement = GetComponent<Movement>();
 
         landingPad = GameObject.FindWithTag("Finish");
         landingPadAudioSource = landingPad.GetComponent<AudioSource>();
     }
-    
+
+    void Update()
+    {
+        RespondToDebugKeys();
+    }
+
+    void RespondToDebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            collisionEnabled = !collisionEnabled;
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            useDebug = true;
+            StartCoroutine(ReloadLevel(useDebug));
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            useDebug = true;
+            StartCoroutine(LoadNextLevel(useDebug));
+        }
+    }
+
     void OnCollisionEnter(Collision other)
     {
         if(!isTransitioning)
@@ -37,8 +65,11 @@ public class CollisionHandler : MonoBehaviour
             }
             else
             {
-                obstacleHit = "Obstacle";
-                CrashHandler(obstacleHit);  
+                if(collisionEnabled)
+                {
+                    obstacleHit = "Obstacle";
+                    CrashHandler(obstacleHit);
+                }
             }
         }
     }
@@ -53,19 +84,22 @@ public class CollisionHandler : MonoBehaviour
         {
             landingPadAudioSource.Play();
             successParticles.Play();
-            StartCoroutine(LoadNextLevel());
+            StartCoroutine(LoadNextLevel(useDebug));
         }
         else if(obstacleHit == "Obstacle")
         {
             rocketAudioSource.PlayOneShot(crashSound);
             explosionParticles.Play();
-            StartCoroutine(ReloadLevel());
+            StartCoroutine(ReloadLevel(useDebug));
         }
     }
 
-    IEnumerator LoadNextLevel()
+    IEnumerator LoadNextLevel(bool useDebug)
     {
-        yield return new WaitForSeconds(2);
+        if(!useDebug)
+        {
+            yield return new WaitForSeconds(2);
+        }
         
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
@@ -82,9 +116,12 @@ public class CollisionHandler : MonoBehaviour
         }
     }
 
-    IEnumerator ReloadLevel()
+    IEnumerator ReloadLevel(bool useDebug)
     {
-        yield return new WaitForSeconds(2);
+        if(!useDebug)
+        {
+            yield return new WaitForSeconds(2);
+        }
         
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;      
 
