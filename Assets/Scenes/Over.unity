@@ -255,6 +255,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -10.608
       objectReference: {fileID: 0}
+    - target: {fileID: 8480770603246937854, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f45bc6637cece08418cb5ea04930d929, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
 --- !u!4 &77877429 stripped
@@ -471,6 +475,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8480770603246937854, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f45bc6637cece08418cb5ea04930d929, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
 --- !u!1001 &296376909
@@ -751,6 +759,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8480770603246937854, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f45bc6637cece08418cb5ea04930d929, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
 --- !u!4 &442003567 stripped
@@ -896,6 +908,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -18.851
       objectReference: {fileID: 0}
+    - target: {fileID: 8480770603246937854, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f45bc6637cece08418cb5ea04930d929, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
 --- !u!1001 &616610830
@@ -1027,6 +1043,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -15.264
       objectReference: {fileID: 0}
+    - target: {fileID: 8480770603246937854, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f45bc6637cece08418cb5ea04930d929, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
 --- !u!1001 &632126946
@@ -1166,6 +1186,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -6.952
       objectReference: {fileID: 0}
+    - target: {fileID: 8480770603246937854, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f45bc6637cece08418cb5ea04930d929, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
 --- !u!1001 &668520719
@@ -1973,6 +1997,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 16.797
       objectReference: {fileID: 0}
+    - target: {fileID: 8480770603246937854, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f45bc6637cece08418cb5ea04930d929, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
 --- !u!4 &1148243506 stripped
@@ -2821,6 +2849,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -15.635
       objectReference: {fileID: 0}
+    - target: {fileID: 8480770603246937854, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f45bc6637cece08418cb5ea04930d929, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
 --- !u!1001 &1691104236
@@ -2959,6 +2991,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -7.347
       objectReference: {fileID: 0}
+    - target: {fileID: 8480770603246937854, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f45bc6637cece08418cb5ea04930d929, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
 --- !u!1001 &1781072105
@@ -2982,15 +3018,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5708630713109259282, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.134212
+      value: 6.91
       objectReference: {fileID: 0}
     - target: {fileID: 5708630713109259282, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.167749
+      value: -10.23
       objectReference: {fileID: 0}
     - target: {fileID: 5708630713109259282, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.533657
+      value: 6.24
       objectReference: {fileID: 0}
     - target: {fileID: 5708630713109259282, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3020,6 +3056,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 12.979
       objectReference: {fileID: 0}
+    - target: {fileID: 8480770603246937854, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f45bc6637cece08418cb5ea04930d929, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa6b3efca2baf9e4d9ef5dbde5ad143e, type: 3}
 --- !u!4 &1808682097 stripped
