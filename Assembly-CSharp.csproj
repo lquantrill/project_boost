@@ -38,9 +38,10 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Movement.cs" />
      <Compile Include="Assets\Scripts\StartAnnouncement.cs" />
+     <Compile Include="Assets\Scripts\Oscillator.cs" />
      <Compile Include="Assets\Scripts\Music.cs" />
      <Compile Include="Assets\Scripts\CollisionHandler.cs" />
-     <Compile Include="Assets\Scripts\Oscillator.cs" />
+     <Compile Include="Assets\Scripts\QuitApplication.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.21f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -640,6 +641,12 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
         <HintPath>D:\Unity\Projects\Project Boost\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+        <HintPath>D:\Unity\Projects\Project Boost\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+        <HintPath>D:\Unity\Projects\Project Boost\Library\ScriptAssemblies\Cinemachine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
