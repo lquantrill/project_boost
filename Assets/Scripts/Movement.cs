@@ -5,16 +5,21 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     Rigidbody rocketRigidbody;
+    AudioSource rocketAudioSource;
+    
+    [SerializeField] AudioClip thrusterSound;
+    [SerializeField] ParticleSystem thrusterParticles;
+    [SerializeField] ParticleSystem sideThrusterRightParticles;
+    [SerializeField] ParticleSystem sideThrusterLeftParticles;
     [SerializeField] float thrustMagnitude = 2000f;
     [SerializeField] float rotateMagnitude = 750f;
     
-    // Start is called before the first frame update
     void Start()
     {
-        rocketRigidbody = GetComponent<Rigidbody>();      
+        rocketRigidbody = GetComponent<Rigidbody>();
+        rocketAudioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         ProcessInput();
@@ -26,8 +31,12 @@ public class Movement : MonoBehaviour
         {
             ThrustRocket();
         }
+        else
+        {
+            StopThrusting();
+        }
 
-        if(Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             RotateRocket("left");
         }
@@ -35,23 +44,62 @@ public class Movement : MonoBehaviour
         {
             RotateRocket("right");
         }
+        else
+        {
+            StopRotating();
+        }
     }
 
     void ThrustRocket()
     {
-         rocketRigidbody.AddRelativeForce(Vector3.up * thrustMagnitude * Time.deltaTime);
+        rocketRigidbody.AddRelativeForce(Vector3.up * thrustMagnitude * Time.deltaTime);
+        if(!rocketAudioSource.isPlaying)
+        {
+            rocketAudioSource.PlayOneShot(thrusterSound);
+        }
+        if(!thrusterParticles.isPlaying)
+        {
+            thrusterParticles.Play();
+        }
     }
-
+    
     void RotateRocket(string direction)
     {
         if(direction == "left")
         {
             rocketRigidbody.AddRelativeTorque(Vector3.forward * rotateMagnitude * Time.deltaTime);
+            if(sideThrusterLeftParticles.isPlaying)
+            {
+                sideThrusterLeftParticles.Stop();
+            }
+            if(!sideThrusterRightParticles.isPlaying)
+            {
+                sideThrusterRightParticles.Play();
+            }
         }
         else
         {
             rocketRigidbody.AddRelativeTorque(-Vector3.forward * rotateMagnitude * Time.deltaTime);
-        }
-        
+            if(sideThrusterRightParticles.isPlaying)
+            {
+                sideThrusterRightParticles.Stop();
+            }
+            if(!sideThrusterLeftParticles.isPlaying)
+            {
+                sideThrusterLeftParticles.Play();
+            }
+        } 
+    }
+
+    void StopThrusting()
+    {
+        rocketAudioSource.Stop();
+        thrusterParticles.Stop();
+    }
+
+    void StopRotating()
+    {
+        sideThrusterRightParticles.Stop();
+        sideThrusterLeftParticles.Stop();
     }
 }
